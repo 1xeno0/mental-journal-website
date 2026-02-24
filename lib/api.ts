@@ -1,4 +1,7 @@
-const API_BASE = process.env.NEXT_PUBLIC_API_BASE || "/api";
+// Use relative path in production to leverage Vercel rewrites and avoid Mixed Content issues
+const API_BASE = process.env.NODE_ENV === 'production' 
+  ? "/api" 
+  : (process.env.NEXT_PUBLIC_API_BASE || "/api");
 
 export class ApiError extends Error {
   status: number;

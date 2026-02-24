@@ -57,3 +57,15 @@ export async function vibeCheck(note: string): Promise<{ ai_response: string }> 
     body: JSON.stringify({ note }),
   });
 }
+
+export async function getCurrentUser(): Promise<any> {
+  return apiFetch("/auth/me", { cache: "no-store" });
+}
+
+export async function logoutUser(): Promise<void> {
+  return apiFetch("/auth/logout", { 
+    method: "POST", 
+    body: JSON.stringify({}), // Send empty JSON body to ensure server treats it as JSON
+    cache: "no-store" 
+  });
+}

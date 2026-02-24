@@ -12,7 +12,7 @@ export interface AuthResponse {
 
 export async function checkAuth(): Promise<AuthResponse> {
   try {
-    const user = await apiFetch<User>("/auth/me");
+    const user = await apiFetch<User>("/auth/me", { cache: "no-store" });
     return { ok: true, user };
   } catch (error) {
     return { ok: false };

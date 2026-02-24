@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+Frontend must follow Frontend_PRD_Serene.md as source of truth.
+
+Do not implement backend logic in frontend.
+
+Do not invent features outside PRD scope.
+
+Architecture is fixed:
+- Next.js (App Router)
+- Communicates only via /api/*
+- Authentication via httpOnly cookie
+- No direct DB access

@@ -1,0 +1,17 @@
+---
+alwaysApply: true
+---
+Authentication handled via httpOnly cookie.
+
+NEVER:
+- Store JWT in localStorage
+- Store JWT in sessionStorage
+- Manually attach JWT to headers
+
+To check authentication:
+- Call GET /api/auth/me
+- Redirect to /login if unauthorized
+
+Protected routes must:
+- Validate session on mount
+- Show loading state while checking auth

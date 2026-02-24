@@ -1,0 +1,13 @@
+---
+alwaysApply: true
+---
+Avoid unnecessary re-renders.
+
+Do not fetch data multiple times.
+
+Use:
+- useEffect carefully
+- Dependency arrays correctly
+
+Initial load target:
+< 2 seconds.

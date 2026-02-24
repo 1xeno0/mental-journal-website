@@ -1,0 +1,14 @@
+---
+alwaysApply: true
+---
+Frontend must work with:
+- Static export build
+- Served by Flask
+
+Do not use:
+- Server-side rendering features
+- Middleware requiring Node runtime
+- API routes inside Next.js
+
+Frontend must build using:
+output: "export"

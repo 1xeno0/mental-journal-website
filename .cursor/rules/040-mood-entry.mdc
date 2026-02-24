@@ -1,0 +1,20 @@
+---
+alwaysApply: true
+---
+Mood entry form must include:
+- Visual mood selector
+- Multi-select tag chips
+- Reflective textarea
+
+Validation rules:
+- Mood required
+- Note >= 50 characters
+
+Submit button must be disabled if invalid.
+
+On successful POST /api/entries:
+- Immediately update timeline
+- Display AI response
+
+If backend returns disclaimer:
+- Render in visually separated block

@@ -1,0 +1,16 @@
+---
+alwaysApply: true
+---
+Design must feel calm:
+- Soft color palette
+- Clean spacing
+- No harsh contrast
+- Minimal visual clutter
+
+Show:
+- Loading skeletons
+- Disabled states
+- Friendly error messages
+
+Mobile responsive required.
+Accessible labels required.

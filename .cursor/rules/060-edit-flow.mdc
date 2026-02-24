@@ -1,0 +1,11 @@
+---
+alwaysApply: true
+---
+Editing entry:
+- Use PUT /api/entries/{id}
+- Re-render entry after save
+
+If note changed:
+- Display updated AI response
+
+UI must not reload entire page.

@@ -1,0 +1,13 @@
+---
+alwaysApply: true
+---
+Weekly analytics uses:
+GET /api/analytics/weekly
+
+Render:
+- Simple bar chart (Recharts)
+- Clean legend
+
+No excessive animation.
+Keep visual noise minimal.
+Must be responsive.

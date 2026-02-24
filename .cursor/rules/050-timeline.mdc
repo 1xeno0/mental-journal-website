@@ -1,0 +1,18 @@
+---
+alwaysApply: true
+---
+Timeline must:
+- Group entries by date (Today, Yesterday, Last Week)
+- Sort newest first
+- Color-code cards by mood
+
+Each card must show:
+- Mood
+- Tags
+- Note preview
+- AI response
+- Edit button
+- Delete button
+
+Delete must:
+- Remove item from UI after success

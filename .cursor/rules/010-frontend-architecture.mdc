@@ -1,0 +1,20 @@
+---
+alwaysApply: true
+---
+Use Next.js App Router.
+
+Structure:
+- app/
+- components/
+- lib/
+
+Keep pages thin.
+Move reusable UI to components/.
+
+No global state library unless absolutely required.
+Prefer local state + useEffect.
+
+All API calls must go to:
+  /api/*
+
+Never hardcode backend URLs.

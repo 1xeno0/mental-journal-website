@@ -1,0 +1,16 @@
+---
+alwaysApply: true
+---
+Use fetch for API calls.
+
+All requests must:
+- Send JSON
+- Handle non-200 responses
+- Show friendly error message
+
+Always:
+- Show loading spinner during request
+- Disable submit button while saving
+- Catch and display errors
+
+Never allow silent failures.

@@ -2,19 +2,9 @@
 
 import { useState } from "react";
 import { MOODS } from "@/lib/constants";
-import { apiFetch } from "@/lib/api";
+import { deleteEntry, Entry } from "@/lib/api";
 
-export interface Entry {
-  id: string;
-  mood: string;
-  tags: string[];
-  note: string;
-  ai_response?: string;
-  disclaimer?: string;
-  created_at: string;
-}
-
-interface EntryCardProps {
+export interface EntryCardProps {
   entry: Entry;
   onDelete: (id: string) => void;
   onEdit: (entry: Entry) => void;
@@ -29,7 +19,7 @@ export default function EntryCard({ entry, onDelete, onEdit }: EntryCardProps) {
     
     setIsDeleting(true);
     try {
-      await apiFetch(`/entries/${entry.id}`, { method: "DELETE" });
+      await deleteEntry(entry.id);
       onDelete(entry.id);
     } catch (err) {
       alert("Failed to delete entry");

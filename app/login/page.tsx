@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import { apiFetch } from "@/lib/api";
+import { loginUser } from "@/lib/api";
 import Cloud from "@/components/Cloud";
 
 // Simple Star component for background details
@@ -36,10 +36,7 @@ export default function LoginPage() {
     setLoading(true);
 
     try {
-      await apiFetch("/auth/login", {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-      });
+      await loginUser({ email, password });
       router.push("/app");
     } catch (err: any) {
       setError(err.message || "Failed to log in");

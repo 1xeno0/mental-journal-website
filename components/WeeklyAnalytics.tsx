@@ -2,19 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, Cell, Legend } from "recharts";
-import { apiFetch } from "@/lib/api";
+import { getEntries, Entry } from "@/lib/api";
 import { MOODS } from "@/lib/constants";
 
-// Define the Entry interface to match what's expected from the API
-interface Entry {
-  id: string;
-  mood: string;
-  tags: string[];
-  note: string;
-  ai_response?: string;
-  disclaimer?: string;
-  created_at: string;
-}
+// Entry interface is imported from @/lib/api
 
 interface MoodCount {
   mood: string;
@@ -41,7 +32,7 @@ export default function WeeklyAnalytics() {
     async function fetchEntriesAndCalculate() {
       try {
         // Fetch raw entries instead of using the weekly endpoint
-        const entries = await apiFetch<Entry[]>("/entries");
+        const entries = await getEntries();
         
         if (!Array.isArray(entries)) {
           setMoodData([]);

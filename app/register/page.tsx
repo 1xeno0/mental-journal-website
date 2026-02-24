@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import { apiFetch } from "@/lib/api";
+import { registerUser } from "@/lib/api";
 import Cloud from "@/components/Cloud";
 
 // Simple Star component for background details
@@ -42,10 +42,7 @@ export default function RegisterPage() {
     setLoading(true);
 
     try {
-      await apiFetch("/auth/register", {
-        method: "POST",
-        body: JSON.stringify({ email, password }),
-      });
+      await registerUser({ email, password });
       // After register, backend usually sets cookie, so redirect to app
       router.push("/app");
     } catch (err: any) {

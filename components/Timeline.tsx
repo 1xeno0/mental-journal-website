@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { apiFetch } from "@/lib/api";
-import EntryCard, { Entry } from "./EntryCard";
+import { getEntries, Entry } from "@/lib/api";
+import EntryCard from "./EntryCard";
 import EditEntryModal from "./EditEntryModal";
 
 interface TimelineProps {
@@ -22,7 +22,7 @@ export default function Timeline({}: TimelineProps) {
 
   async function fetchEntries() {
     try {
-      const data = await apiFetch<Entry[]>("/entries");
+      const data = await getEntries();
       // Sort newest first
       const sorted = data.sort((a, b) => 
         new Date(b.created_at).getTime() - new Date(a.created_at).getTime()

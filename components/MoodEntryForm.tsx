@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { MOODS, TAGS } from "@/lib/constants";
-import { apiFetch } from "@/lib/api";
+import { createEntry, vibeCheck } from "@/lib/api";
 
 interface MoodEntryFormProps {
   onEntryCreated?: (data: any) => void;
@@ -36,22 +36,16 @@ export default function MoodEntryForm({ onEntryCreated }: MoodEntryFormProps) {
 
     try {
       // First save the entry
-      const entryData = await apiFetch<any>("/entries", {
-        method: "POST",
-        body: JSON.stringify({
-          mood,
-          tags: selectedTags,
-          note,
-        }),
+      const entryData = await createEntry({
+        mood,
+        tags: selectedTags,
+        note,
       });
 
       // Then get the vibe check
       let aiResponse = null;
       try {
-        const vibeData: any = await apiFetch("/ai/vibe-check", {
-          method: "POST",
-          body: JSON.stringify({ note }),
-        });
+        const vibeData = await vibeCheck(note);
         aiResponse = vibeData.ai_response;
       } catch (vibeError) {
         console.error("Vibe check failed:", vibeError);

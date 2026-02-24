@@ -1,4 +1,4 @@
-import { apiFetch } from "./api";
+import { getCurrentUser } from "./api";
 
 export interface User {
   id: string;
@@ -12,7 +12,7 @@ export interface AuthResponse {
 
 export async function checkAuth(): Promise<AuthResponse> {
   try {
-    const user = await apiFetch<User>("/auth/me", { cache: "no-store" });
+    const user = await getCurrentUser();
     return { ok: true, user };
   } catch (error) {
     return { ok: false };

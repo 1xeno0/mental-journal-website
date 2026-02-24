@@ -3,8 +3,7 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { MOODS, TAGS } from "@/lib/constants";
-import { apiFetch } from "@/lib/api";
-import { Entry } from "./EntryCard";
+import { updateEntry, Entry } from "@/lib/api";
 
 interface EditEntryModalProps {
   entry: Entry;
@@ -61,9 +60,10 @@ export default function EditEntryModal({ entry, isOpen, onClose, onSave }: EditE
     setError("");
 
     try {
-      const updated = await apiFetch<Entry>(`/entries/${entry.id}`, {
-        method: "PUT",
-        body: JSON.stringify({ mood, tags: selectedTags, note }),
+      const updated = await updateEntry(entry.id, {
+        mood,
+        tags: selectedTags,
+        note,
       });
       onSave(updated);
       onClose();
